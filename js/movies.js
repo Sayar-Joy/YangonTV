@@ -387,7 +387,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  // Render 12 items for popular and 12 for trending
+  // Render 12 items for popular and 12 for popular (second block shows another set)
   const popular12 = movies.slice(0, 12);
   const trending12 = movies.slice(0, 12).slice().reverse();
 
@@ -398,11 +398,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 // (Optional) expose for console debugging
 window.__dumpMediaData = () => {
   console.log(
-    "Popular container HTML:",
+    "Recently added container HTML:",
     document.getElementById("popular-movies-container")?.innerHTML
   );
   console.log(
-    "Trending container HTML:",
+    "Popular (second) container HTML:",
     document.getElementById("trending-movies-container")?.innerHTML
   );
 };
@@ -424,7 +424,7 @@ function initMediaToggle(globalData) {
 
     // Because duplicate id="header-container" exists, use all matching elements
     document.querySelectorAll("#header-container h5").forEach((h5, idx) => {
-      h5.textContent = (idx === 0 ? "Popular " : "Trending ") + typeTitle;
+      h5.textContent = (idx === 0 ? "Recently Added " : "Popular ") + typeTitle;
     });
 
     const popular = getItemsForType(globalData, type);

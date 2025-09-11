@@ -44,8 +44,8 @@
     }
 
     const labels = {
-      "popularMovies.html": "Popular Movies",
-      "trendingMovies.html": "Trending Movies",
+      "popularMovies.html": "Recently Added Movies",
+      "trendingMovies.html": "Popular Movies",
       "popularSeries.html": "Popular Series",
       "trendingSeries.html": "Trending Series",
       "movies.html": "Movies",

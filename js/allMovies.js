@@ -1,4 +1,4 @@
-/* Render paginated "all popular movies" (18 per page) */
+/* Render paginated "all recently added movies" (18 per page) */
 
 const MOVIES_PER_PAGE = 18;
 
@@ -367,7 +367,7 @@ function renderPagination(
 }
 
 // Configure endpoints – update TRENDING_API to real trending when available
-const POPULAR_API = "https://yangontv.org/api/movies";
+const POPULAR_API = "https://yangontv.org/api/movies"; // recently added
 const TRENDING_API = "https://yangontv.org/api/popular";
 
 async function renderPopularAll(page = 1) {
@@ -424,7 +424,7 @@ async function renderTrendingAll(page = 1) {
     // Render pagination using total and perPage from API
     renderPagination(containerId, total, apiPage, perPage);
   } catch (err) {
-    container.innerHTML = `<div style="color:#f66">Failed to load trending movies: ${String(
+    container.innerHTML = `<div style="color:#f66">Failed to load popular movies: ${String(
       err.message || err
     )}</div>`;
     console.error("[allMovies] renderTrendingAll error:", err);

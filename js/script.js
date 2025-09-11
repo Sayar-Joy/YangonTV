@@ -269,7 +269,7 @@ function initSlider() {
 /* ---------- API DATA LOADING (MOVIES ONLY, NEW API) ---------- */
 
 // Configure endpoints
-const POPULAR_API = "https://yangontv.org/api/movies"; // Popular
+const POPULAR_API = "https://yangontv.org/api/movies"; // Recently added
 const TRENDING_API = "https://yangontv.org/api/popular"; // Trending
 
 function buildApiUrl(base, page = 1) {
@@ -383,7 +383,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (_) {}
   }
 
-  // Only run home-page popular/trending logic if the containers exist
+  // Only run home-page recently-added/trending logic if the containers exist
   const hasHomeSections =
     document.getElementById("popular-movies-container") ||
     document.getElementById("trending-movies-container");
@@ -402,7 +402,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Set headings (home only)
     document.querySelectorAll("#header-container h5").forEach((h5, idx) => {
-      h5.textContent = idx === 0 ? "Popular Movies" : "Trending Movies";
+      h5.textContent = idx === 0 ? "Recently Added Movies" : "Popular Movies";
     });
 
     // Update "See all" links
@@ -433,7 +433,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 // Debug helper
 window.__dumpMediaData = () => {
   console.log(
-    "Popular container HTML:",
+    "Recently added container HTML:",
     document.getElementById("popular-movies-container")?.innerHTML
   );
   console.log(
