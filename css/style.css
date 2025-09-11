@@ -966,9 +966,15 @@ a.movie-card p {
   overflow-x: auto;
   overflow-y: hidden;
   padding: 10px clamp(8px, 3vw, 24px) 14px clamp(8px, 3vw, 24px); /* equal left/right */
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: none !important; /* free scrolling: force-disable snapping */
   -webkit-overflow-scrolling: touch;
   box-sizing: border-box;
+}
+
+/* Explicitly disable any child snap alignment to prevent snapping to card starts */
+.scroller > * {
+  scroll-snap-align: none !important;
+  scroll-snap-stop: normal !important;
 }
 
 /* visual scrollbar tweak */
@@ -982,7 +988,6 @@ a.movie-card p {
 
 /* each genre card */
 .genre {
-  scroll-snap-align: start;
   text-decoration: none;
   color: inherit;
   display: grid;
@@ -1040,15 +1045,15 @@ a.movie-card p {
 /* responsive adjustments */
 @media (max-width: 560px) {
   .scroller {
-  grid-auto-columns: 106px; /* smaller on mobile */
-  gap: 6px; /* keep touch-friendly spacing */
+    grid-auto-columns: 106px; /* smaller on mobile */
+    gap: 6px; /* keep touch-friendly spacing */
     padding: 8px 12px;
   }
   .mosaic {
-  height: 135px; /* smaller on mobile */
+    height: 135px; /* smaller on mobile */
   }
   .label {
-  font-size: 0.7rem; /* smaller label on mobile */
+    font-size: 0.7rem; /* smaller label on mobile */
   }
 }
 
