@@ -374,7 +374,7 @@ footer.foot {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 1.2rem 0;
+  padding: 0.6rem 0; /* more compact top/bottom padding */
   background: rgba(17, 17, 17, 0.85); /* semi-transparent */
   color: #fff;
   /* Push footer to the bottom when content is short */
