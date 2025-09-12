@@ -383,7 +383,8 @@ footer.foot {
 
 footer.foot p {
   margin: 0.2em 0;
-  font-size: clamp(0.8rem, 0.9vw + 0.6rem, 1rem); /* smaller than h5 */
+  font-size: clamp(0.4rem, 0.6vw + 0.2rem, 0.9rem); /* smaller, compact */
+  opacity: 0.7; /* lower emphasis */
 }
 
 /* =========================
