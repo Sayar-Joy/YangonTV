@@ -144,7 +144,7 @@
 
   function renderHeader(genreName) {
     const h = document.getElementById("genres-current");
-    if (h) h.textContent = genreName ? `Select a gender` : "Select a gender";
+    if (h) h.textContent = genreName ? `Select a genre` : "Select a genre";
     const sub = document.getElementById("genre-movies-title");
     if (sub) sub.textContent = genreName ? `Movies for (${genreName})` : "";
   }
