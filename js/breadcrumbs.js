@@ -44,13 +44,14 @@
     }
 
     const labels = {
-      "popularMovies.html": "Recently Added Movies",
-      "trendingMovies.html": "Popular Movies",
+      "RecentMovies.html": "Recently Added Movies",
+      "PopularMovies.html": "Popular Movies",
       "popularSeries.html": "Popular Series",
       "trendingSeries.html": "Trending Series",
       "movies.html": "Movies",
       "series.html": "Series",
       "genre.html": "Genres",
+      "aboutUs.html": "About Us",
       "reachUs.html": "Reach Us",
     };
 

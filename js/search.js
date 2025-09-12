@@ -59,10 +59,13 @@ function updateHeading(keyword, total) {
   const summary = document.getElementById("search-summary");
   if (!h || !summary) return;
   if (!keyword) {
-    h.textContent = "Search Movies";
+    // Hide heading until a search is made
+    h.style.display = "none";
     summary.textContent = "Enter a keyword to search movies.";
     return;
   }
+  // Show and update heading after search
+  h.style.display = "block";
   h.textContent = `Movies for "${keyword}"`;
   if (total != null) {
     summary.textContent =
@@ -113,7 +116,7 @@ function renderCards(items, page) {
   container.innerHTML = "";
   if (!items.length) {
     container.innerHTML =
-      "<p style='font-size:.8rem;opacity:.7;'>No movies available.</p>";
+      "<p style='font-size:.8rem;opacity:.7;white-space:nowrap;text-align:center;'>No movies available.</p>";
     return;
   }
   const start = (page - 1) * PAGE_SIZE;
@@ -142,7 +145,6 @@ function renderCards(items, page) {
     container.appendChild(a);
   });
 }
-
 function renderPagination(total, page, keyword) {
   const pag = document.getElementById("pagination");
   if (!pag) return;
@@ -212,7 +214,7 @@ async function renderResults(keyword, page = 1) {
   if (!keyword) {
     updateHeading("", null);
     container.innerHTML =
-      "<p style='font-size:.8rem;opacity:.7;'>Type something to search.</p>";
+      "<p style='font-size:.8rem;opacity:.7;white-space:nowrap;text-align:center;'>Type something to search.</p>";
     document.getElementById("pagination").innerHTML = "";
     return;
   }
@@ -234,9 +236,9 @@ async function renderResults(keyword, page = 1) {
   }
   const total = _cachedResults.length;
   if (total === 0) {
-    container.innerHTML = `<p class="error-msg">No movies are found for (${escapeHTML(
+    container.innerHTML = `<p style="font-size:.9rem;white-space:nowrap;text-align:center;color:#fff;grid-column:1/-1;width:100%;">No movies are found for \"${escapeHTML(
       keyword
-    )}) in search</p>`;
+    )}\" in search</p>`;
     document.getElementById("pagination").innerHTML = "";
     return;
   }

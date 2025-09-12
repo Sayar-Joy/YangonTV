@@ -10,6 +10,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
     <style>
+      #search-heading {
+        text-align: center;
+        margin: 8px 0 6px;
+        font-size: 1.25rem; /* slightly smaller than default h1 */
+      }
       .search-summary {
         margin: 10px 0 14px;
         font-size: 0.9rem;
@@ -72,6 +77,7 @@
     <div id="main-container">
       <div id="ad-container"></div>
 
+      <h1 id="search-heading" style="display: none">Search Movies</h1>
       <div id="search-summary" class="search-summary"></div>
       <div class="movie-card-container" id="search-results-container"></div>
       <div id="pagination" class="pagination" aria-label="Pagination"></div>

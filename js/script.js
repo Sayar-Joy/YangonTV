@@ -409,8 +409,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     document
       .querySelectorAll("#header-container a.red-button")
       .forEach((a, idx) => {
-        a.href = idx === 0 ? "popularMovies.html" : "trendingMovies.html";
+        a.href = idx === 0 ? "RecentMovies.html" : "PopularMovies.html";
       });
+
+    // Safety: rewrite any lingering old links
+    document
+      .querySelectorAll('a[href$="popularMovies.html"]')
+      .forEach((a) => (a.href = "RecentMovies.html"));
 
     renderMoviesInto("popular-movies-container", popular);
     renderMoviesInto("trending-movies-container", trending);
