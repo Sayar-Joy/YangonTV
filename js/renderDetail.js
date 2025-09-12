@@ -227,7 +227,7 @@ async function renderDetail() {
           <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px">
             <path fill="#fff" d="M9.036 15.803l-.378 5.324c.541 0 .775-.232 1.056-.51l2.538-2.431 5.259 3.85c.964.532 1.649.252 1.915-.893l3.47-16.266.001-.001c.308-1.437-.519-1.999-1.463-1.647L1.12 9.76c-1.41.548-1.389 1.336-.24 1.691l4.864 1.517L19.5 6.3c.69-.452 1.32-.202.802.25"/>
           </svg>
-          <span>Watch on Telegram</span>
+          <span>Watch full movie on Telegram</span>
         </a>
         <a href="${
           item.youTube || item.subcribe || "#"

@@ -63,9 +63,28 @@
 
       // Title as current (prefer document.title, else id)
       const id = q("id") || "Detail";
-      let title = document.title || id;
-      // Clean default titles like "Movie Detail"
-      if (/detail/i.test(title) && id) title = id;
+
+      // Helper: try to read the title from the rendered DOM
+      const getDetailTitleFromDOM = () => {
+        const h2 = document.querySelector("#detail-container h2");
+        if (!h2) return "";
+        // Remove trailing year e.g., "Title (2024)"
+        return (h2.textContent || "").replace(/\s*\(\d{4}\)\s*$/, "").trim();
+      };
+
+      // Helper: clean document.title like "Some Title - Movies" or generic "Detail"
+      const cleanDocTitle = (t) => {
+        if (!t) return "";
+        let s = String(t).trim();
+        // Drop trailing section suffix
+        s = s.replace(/\s*-\s*(Movies|Series)\s*$/i, "");
+        // Ignore generic titles (e.g., "Movie Detail")
+        if (/\bdetail\b/i.test(s)) return "";
+        return s.trim();
+      };
+
+      let title =
+        getDetailTitleFromDOM() || cleanDocTitle(document.title) || id;
       crumbs.push({ label: title, current: true });
       return crumbs;
     }
@@ -94,5 +113,33 @@
   // Expose an updater so pages can refresh breadcrumb after dynamic title changes
   window.updateBreadcrumb = render;
 
-  document.addEventListener("DOMContentLoaded", render);
+  document.addEventListener("DOMContentLoaded", () => {
+    render();
+
+    // If we're on the detail page, observe for async content to update title
+    if (
+      (window.location.pathname.split("/").pop() || "index.html").replace(
+        /#.*/,
+        ""
+      ) === "detail.html"
+    ) {
+      const container = document.getElementById("detail-container");
+      if (container) {
+        let updated = false;
+        const mo = new MutationObserver(() => {
+          if (updated) return;
+          const h2 = container.querySelector("h2");
+          if (h2 && (h2.textContent || "").trim()) {
+            updated = true;
+            mo.disconnect();
+            render();
+          }
+        });
+        mo.observe(container, { childList: true, subtree: true });
+        // Fallback retries in case MutationObserver misses initial change
+        setTimeout(render, 300);
+        setTimeout(render, 800);
+      }
+    }
+  });
 })();
